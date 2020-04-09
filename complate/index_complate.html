@@ -10,8 +10,7 @@
 
 <body>
     <script>
-        Kakao.init("e90deea2803673a289e952ce9114cde0");
-        console.log(Kakao.isInitialized());
+        Kakao.init("CODE");
         let message =
             Kakao.Auth.login({
                 success: function (authObj) {
@@ -24,10 +23,10 @@
                                 templateArgs: {
                                     'title': nickname + "님이 선물과 메시지를 보냈습니다.",
                                     'description': '자세한 내용은 선물함에서 확인해주세요.',
-                                    'img_url': 'http://nimda.party/test/images/bbq.png',
+                                    'img_url': 'IMG_URL1',
                                     'heigth': '200',
                                     'width': '700',
-                                    'btn_url': '/test/fake.html'
+                                    'btn_url': 'BTN_URL'
                                 }
                             });
                         },
