@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>KaKao</title>
+    <script src="./kakao.js"></script>
+
+</head>
+
+<body>
+    <script>
+        Kakao.init("e90deea2803673a289e952ce9114cde0");
+        console.log(Kakao.isInitialized());
+        let message =
+            Kakao.Auth.login({
+                success: function (authObj) {
+                    Kakao.API.request({
+                        url: '/v2/user/me',
+                        success: function (response) {
+                            let nickname = response['properties']['nickname'];
+                            Kakao.Link.sendCustom({
+                                templateId: 23165,
+                                templateArgs: {
+                                    'title': nickname + "님이 선물과 메시지를 보냈습니다.",
+                                    'description': '자세한 내용은 선물함에서 확인해주세요.',
+                                    'img_url': 'http://nimda.party/test/images/bbq.png',
+                                    'heigth': '200',
+                                    'width': '700',
+                                    'btn_url': '/test/fake.html'
+                                }
+                            });
+                        },
+                        fail: function (error) {
+                            console.log(error);
+                        }
+                    });
+
+                },
+                fail: function (err) {
+                    alert(JSON.stringify(err))
+                }
+            });
+    </script>
+</body>
+
+</html>
